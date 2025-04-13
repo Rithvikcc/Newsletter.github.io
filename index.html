@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Genius Filter - Subscribe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: 'Open Sans', sans-serif; /* Default font */
+        }
+
+        body {
+            /* --- IMPORTANT: Replace with your actual image URL --- */
+            background-image: url('Ele.png'); /* Placeholder - Use a high-res image */
+            background-size:103.14em;
+            background-position:center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* Keeps background fixed during scroll, if page gets longer */
+            color: #fafafa;
+            display: flex;
+            justify-content: flex-end;
+            flex-direction: column; /* Allows positioning logo at top and content centered */
+            min-height: 100vh; /* Ensure it takes at least full viewport height */
+            position: relative; /* Needed for the overlay */
+        }
+
+        /* Dark Overlay for better text contrast */
+        body::before {
+            background-color: rgb(35, 40, 40);
+            opacity:0.21;
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+        }
+
+        /* Logo Placeholder (Top Left) */
+        .logo-placeholder {
+            position: relative;
+            top: 45px;
+            left: 49px;
+            width: 45px;
+            height: 45px;
+            padding:0;
+            line-height: 45px;
+            text-align: center;
+            font-size:0.7rem;
+            font-weight:bolder;
+            color: #261d88;
+            background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white */
+            border-radius: 50%; /* Makes it round */
+            z-index: 2; /* Above the overlay */
+        }
+        .posts-btn {
+           position:relative;
+           top: 3px;
+           left: 1578px;
+           z-index: 15;
+           border: none;
+           display:flex;
+           justify-content: center;
+           text-transform: uppercase;
+           align-items: center;
+           text-decoration: none;
+           cursor:pointer;
+           line-height:1;
+           width: 4px;
+           height: 1px;
+           padding:14px 40px;
+           background-color:rgba(39, 33, 33, 0.308);
+           opacity: 0.8;
+           color:rgb(254, 254, 254);
+           font-size:0.9rem;
+           font-weight:600px;
+           border-radius:8px;
+           font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+         }
+         
+        @media(max-width:600px){
+            .logo-placeholder,
+            .posts-btn{
+                top: 15px;
+            }
+            .logo-placeholder{
+                left: 15px;
+                width: 40px;
+                height: 40px;
+                font-size:0.7rem;
+        }
+    }
+        /* Main Content Container */
+        .content-container {
+            display: flex;
+            flex-direction: column;
+            justify-content:center; /* Vertically center */
+            align-items:center; 
+            flex-grow: 500;            /* Takes available vertical space */
+            text-align: center;
+            padding:0 40px;
+            position:static;      /* Needed to be above the overlay */
+            z-index: 2;
+            width: 100%;
+            max-width: 800px; /* Limit content width for readability */
+            margin: 0 auto; /* Center the container itself */
+        }
+
+        /* Main Heading */
+        h1 {
+            font-size: 4.8em; /* Large font size */
+            font-weight:bolder; /* Bold */
+            margin-bottom:5px; /* Space below heading */
+            margin-top: 0;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Sub-heading "by [sei]" */
+        .sub-heading {
+            font-size: 1.5em;
+            font-weight: bolder;
+            margin-top: 0;
+            margin-bottom: 10px; /* Space below sub-heading */
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Tagline Text */
+        .tagline {
+            font-size:29px;
+            margin-bottom: 40px;
+            line-height: 1.4;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            max-width: 700px; /* Limit tagline width */
+            margin-top: 0;
+            margin-left: auto;
+            margin-right: auto;
+            letter-spacing: 0.0em;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Form Container */
+        .form-container {
+
+            display: flex; /* Align input and button horizontally */
+            justify-content: center; /* Center items if they don't fill width */
+            width: 100%;
+            max-width: 520px; /* Control the form width */
+            margin: 0 auto;
+        }
+
+        /* Email Input Field */
+        #mce-EMAIL {
+            padding:15px;
+            width: 250px;
+            background: rgba(0, 0, 0, 0.292);
+            border-color: rgb(246, 244, 244);
+            border: 1px solid;
+            border-radius: 0px;
+            font-size:18px;
+            text-align: left;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 400px;
+            color: rgb(232, 232, 232);
+            font-family: Arial, Helvetica, sans-serif;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            
+            margin-right: none; /* Space between input and button */
+            line-height: normal; /* Ensure consistent height */
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        #mce-EMAIL::placeholder { /* Style placeholder text */
+            color: #b0b0b0;
+            text-align:left;
+            opacity: 1; /* Firefox fix */
+        }
+
+        /* Subscribe Button */
+        #mc-embedded-subscribe {
+            padding: 15px 50px; /* Adjust padding */
+            font-size: 1.2em;
+            font-weight: 600; /* Semi-bold */
+            font-family:Arial, Helvetica, sans-serif;
+            color: #050404; /* Dark text color */
+            background-color: #ffffff; /* White background */
+            border: none; /* Remove default border */
+            border-radius:none; /* Slightly rounded corners */
+            cursor: pointer;
+            white-space: nowrap; /* Prevent text wrapping */
+            transition: background-color 0.2s ease, color 0.2s ease; /* Smooth hover effect */
+            line-height: normal; /* Ensure consistent height */
+            flex-grow: 0;
+            flex-shrink: 0;
+        }
+
+        #mc-embedded-subscribe:hover {
+            background-color: #f0f0f0; /* Slightly darker on hover */
+        }
+
+        /* Confirmation Message Area */
+        .confirmation-message {
+            margin-top: 15px; /* Space above the message */
+            font-size: 1.5em;
+            font-weight:500;
+            color: #e9ede9; /* Light green color for success */
+            height: 1.5em; /* Reserve space even when empty to prevent layout shift */
+            visibility: hidden; /* Hide initially */
+            opacity: 0; /* Start fully transparent */
+            transition: opacity 0.5s ease, visibility 0s linear 0.5s; /* Fade out effect */
+        }
+
+        .confirmation-message.visible {
+            visibility: visible;
+            opacity: 1;
+            transition: opacity 0.5s ease; /* Fade in effect */
+        }
+
+         /* --- Mailchimp Specific - Placeholder --- */
+         /* You might need to uncomment and use Mailchimp's own CSS or styles */
+         /* #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; } */
+         /* Add any Mailchimp specific styles here if needed */
+
+        /* Responsive Adjustments */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.8em; /* Smaller heading on small screens */
+            }
+            .sub-heading {
+                font-size: 1.1em;
+            }
+            .tagline {
+                font-size: 1em;
+            }
+            .form-container {
+                flex-direction: column; /* Stack form elements */
+                max-width: 90%;
+            }
+            #mce-EMAIL {
+                text-align: left;
+                margin-right: 0; /* Remove right margin when stacked */
+                margin-bottom: 10px; /* Add space below input when stacked */
+                width: 100%; /* Full width when stacked */
+            }
+            #mc-embedded-subscribe {
+                 width: 100%; /* Full width button when stacked */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-placeholder">[Ele]</div>
+    <div class="posts-btn">POSTS</div>
+
+    <!-- Main Content Area -->
+    <div class="content-container">
+        <h1>The Genius Filter</h1>
+        <p class="sub-heading">by [Ele]</p>
+        <p class="tagline">
+            Welcome to Electron.
+            Every day we'll send you the world's most important AI,business news, with a witty twist.
+            So start your day with Electron and ready to go
+        </p>
+
+        <!-- Newsletter Signup Form -->
+        <!-- IMPORTANT: Replace '#' with your actual Mailchimp form action URL -->
+        <form action="#" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+            <div class="form-container">
+                <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Your Email Address" required>
+
+                <!-- Mailchimp real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_YOUR_MAILCHIMP_ACCOUNT_ID_HERE" tabindex="-1" value=""></div>
+
+                <button type="submit" name="subscribe" id="mc-embedded-subscribe">SUBSCRIBE</button>
+            </div>
+        </form>
+
+        <!-- Confirmation Message Area -->
+        <div id="confirmation-message" class="confirmation-message">
+            <!-- Message will be inserted here by JavaScript -->
+        </div>
+
+    </div>
+
+    <script>
+        // Get references to the form elements
+        const subscribeForm = document.getElementById('mc-embedded-subscribe-form');
+        const emailInput = document.getElementById('mce-EMAIL');
+        const confirmationMessage = document.getElementById('confirmation-message');
+
+        // Add event listener for form submission
+        subscribeForm.addEventListener('submit', function(event) {
+            // Prevent the default form submission (which would navigate away)
+            // IMPORTANT: For actual Mailchimp integration, you might let it submit
+            // or use AJAX based on Mailchimp's instructions. This JS is just for showing the message.
+            event.preventDefault();
+
+            // Basic check if email field is not empty (HTML5 'required' also helps)
+            if (emailInput.value.trim() !== '') {
+
+                // --- SIMULATED SUCCESS ---
+                // In a real scenario, you'd likely wait for a success response from Mailchimp here.
+
+                // Display the confirmation message
+                confirmationMessage.textContent = 'Thank for Subscribing! You should start seeing our newsletters in your mailbox real soon.';
+                confirmationMessage.classList.add('visible'); // Make it visible with fade-in
+
+                // Optional: Clear the input field after submission
+                emailInput.value = '';
+
+                // Optional: Hide the message after a few seconds
+                setTimeout(() => {
+                    confirmationMessage.classList.remove('visible'); // Fade it out
+                    // Optional: Clear text after fade out completes (matches transition duration)
+                    setTimeout(() => {
+                         confirmationMessage.textContent = '';
+                    }, 500); // Should match the transition duration in CSS
+                }, 4000); // Hide after 4 seconds (4000 milliseconds)
+
+            } else {
+                // Optional: Handle empty input case if needed, though 'required' helps
+                console.log("Email is required.");
+                // You could show an error message here instead
+            }
+        });
+    </script>
+
+</body>
+</html>
